@@ -18,7 +18,7 @@
         </div>
         <div class="mb-6">
             <Label for="password" class="mb-2">Password</Label>
-            <Input type="password" name="password" placeholder="•••••••••" required />
+            <Input type="password" name="password" placeholder="••••••••" required />
         </div>
         <Button type="submit">Sign in</Button>
     </form>
