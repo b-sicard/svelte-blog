@@ -12,6 +12,4 @@ export const getPosts = async () => {
     if (!response.ok) return
 
     const posts = await response.json()
-
-    console.log(posts)
 }

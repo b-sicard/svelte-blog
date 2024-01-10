@@ -1,26 +1,26 @@
 <script>
     import { Heading, Input, Label, Button } from 'flowbite-svelte';
-    import { login } from './services/auth';
-
-    let email = ''
-    let password = ''
 </script>
+
+<svelte:head>
+    <title>Blog - Login</title>
+</svelte:head>
 
 <div class="container">
     <Heading tag="h1" class="mb-10" customSize="text-4xl font-extrabold  md:text-5xl lg:text--6xl">
         Login
     </Heading>
     
-    <form>
+    <form method="POST">
         <div class="mb-6">
             <Label for="email" class="mb-2">Email address</Label>
-            <Input type="email" id="email" placeholder="john.doe@company.com" bind:value={email} required />
+            <Input type="email" id="email" placeholder="john.doe@company.com" required />
         </div>
         <div class="mb-6">
             <Label for="password" class="mb-2">Password</Label>
-            <Input type="password" id="password" placeholder="•••••••••" bind:value={password} required />
+            <Input type="password" id="password" placeholder="•••••••••" required />
         </div>
-        <Button type="submit" on:click={() => login(email, password)}>Sign in</Button>
+        <Button type="submit">Sign in</Button>
     </form>
 </div>
 
