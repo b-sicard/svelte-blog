@@ -1,5 +1,7 @@
 <script>
-    import { Heading, Input, Label, Button } from 'flowbite-svelte';
+    import { Heading, Input, Label, Button, Alert } from 'flowbite-svelte';
+
+    export let form;
 </script>
 
 <svelte:head>
@@ -10,6 +12,12 @@
     <Heading tag="h1" class="mb-10" customSize="text-4xl font-extrabold  md:text-5xl lg:text--6xl">
         Login
     </Heading>
+
+    {#if form?.error}
+        <Alert color="red" class="mb-5">
+            {form.description}
+        </Alert>
+    {/if}
     
     <form method="POST">
         <div class="mb-6">
@@ -26,7 +34,6 @@
 
 <style>
     .container {
-        height: 100%;
         max-width: 500px;
         margin: 0 auto;
         display: flex;

@@ -3,12 +3,7 @@
     import { Navbar, NavBrand, NavLi, NavUl, NavHamburger, Button } from 'flowbite-svelte';
 </script>
 
-<Navbar style={
-    `
-        border-bottom: 1px solid #E5E7EB;
-        margin-bottom: 50px;
-    `
-}>
+<Navbar style={'border-bottom: 1px solid #E5E7EB;'}>
     <NavBrand href="/">
         <span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
             Blog

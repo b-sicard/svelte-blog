@@ -1,6 +1,5 @@
-import { goto } from '$app/navigation'
 import { PUBLIC_API_URL } from '$env/static/public'
-import { redirect, type Actions } from '@sveltejs/kit'
+import { redirect, type Actions, fail } from '@sveltejs/kit'
 
 export const actions: Actions = {
     default: async ({ cookies, request, fetch }) => {
@@ -20,14 +19,11 @@ export const actions: Actions = {
         })
     
         if (!response.ok) {
-            const { errors } = await response.json()
-            return {
-                status: 400,
-                body: {
-                    success: false,
-                    errors
-                }
-            }
+            const error = await response.json()
+			return fail(401, {
+				description: 'Invalid e-mail or password.',
+                error: error.message,
+			});
         }
     
         const token = await response.json()
