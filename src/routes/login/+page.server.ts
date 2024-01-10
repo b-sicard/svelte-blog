@@ -1,8 +1,8 @@
 import { goto } from '$app/navigation'
 import { PUBLIC_API_URL } from '$env/static/public'
-import { redirect } from '@sveltejs/kit'
+import { redirect, type Actions } from '@sveltejs/kit'
 
-export const actions = {
+export const actions: Actions = {
     default: async ({ cookies, request, fetch }) => {
         const data = await request.formData()
         const email = data.get('email')

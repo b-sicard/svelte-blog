@@ -14,11 +14,11 @@
     <form method="POST">
         <div class="mb-6">
             <Label for="email" class="mb-2">Email address</Label>
-            <Input type="email" id="email" placeholder="john.doe@company.com" required />
+            <Input type="email" name="email" placeholder="john.doe@company.com" required />
         </div>
         <div class="mb-6">
             <Label for="password" class="mb-2">Password</Label>
-            <Input type="password" id="password" placeholder="•••••••••" required />
+            <Input type="password" name="password" placeholder="•••••••••" required />
         </div>
         <Button type="submit">Sign in</Button>
     </form>
