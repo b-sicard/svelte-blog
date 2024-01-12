@@ -20,9 +20,9 @@ export const actions: Actions = {
 			});
         }
 
-        const { token } = await response.json()
+        const { user, token } = await response.json()
         
-        cookies.set('token', token, {
+        cookies.set('token', token.token, {
             path: '/',
             httpOnly: true,
             sameSite: 'strict',
