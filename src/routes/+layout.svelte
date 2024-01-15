@@ -1,6 +1,14 @@
 <script>
     import "../app.pcss";
     import { Navbar, NavBrand, NavLi, NavUl, NavHamburger, Button } from 'flowbite-svelte';
+
+    export let data;
+
+    console.log(data)
+
+    function logout() {
+
+    }
 </script>
 
 <Navbar style={'border-bottom: 1px solid #E5E7EB;'}>
@@ -15,7 +23,11 @@
         <NavLi href="/categories">Categories</NavLi>
     </NavUl>
     <div class="flex">
-        <Button href="/login" size="sm">Login</Button>
+        {#if data.user === undefined}
+            <Button href="/login" size="sm">Login</Button>
+        {:else}
+            <Button on:click={logout} size="sm">Logout</Button>
+        {/if}
         <NavHamburger />
     </div>
 </Navbar>

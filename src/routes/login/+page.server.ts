@@ -1,7 +1,7 @@
 import { redirect, type Actions, fail } from '@sveltejs/kit'
 import * as api from '$lib/services/api';
 
-export const actions: Actions = {
+export const actions = {
     default: async ({ cookies, request }) => {
         const formData = await request.formData()
         const email = formData.get('email')
@@ -13,10 +13,9 @@ export const actions: Actions = {
         }, '')
     
         if (!response.ok) {
-            const error = await response.json()
+            const { error } = await response.json()
 			return fail(401, {
-                error: error.title,
-				description: error.description
+                error
 			});
         }
 
@@ -28,7 +27,12 @@ export const actions: Actions = {
             sameSite: 'strict',
             maxAge: 60 * 60 * 24 * 1000
         })
+
+        
+        // cookies.set('user', JSON.stringify(user), { 
+        //     path: '/'
+        // });
     
         throw redirect(302, '/')
     }
-}
+} satisfies Actions

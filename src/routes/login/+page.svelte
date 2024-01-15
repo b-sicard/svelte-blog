@@ -15,7 +15,7 @@
 
     {#if form?.error}
         <Alert color="red" class="mb-5">
-            {form.description}
+            {form.error}
         </Alert>
     {/if}
     
