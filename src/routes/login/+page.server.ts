@@ -10,7 +10,7 @@ export const actions = {
         const response = await api.post('login', {
             email,
             password
-        }, '')
+        })
     
         if (!response.ok) {
             const { error } = await response.json()
@@ -21,17 +21,16 @@ export const actions = {
 
         const { user, token } = await response.json()
         
+        cookies.set('user_id', user.id, { 
+            path: '/'
+        });
+
         cookies.set('token', token.token, {
             path: '/',
             httpOnly: true,
             sameSite: 'strict',
             maxAge: 60 * 60 * 24 * 1000
         })
-
-        
-        // cookies.set('user', JSON.stringify(user), { 
-        //     path: '/'
-        // });
     
         throw redirect(302, '/')
     }
