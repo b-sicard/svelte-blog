@@ -1,6 +1,13 @@
 import { redirect, type Actions, fail } from '@sveltejs/kit'
 import * as api from '$lib/services/api';
 
+export async function load({ locals }) {
+    // redirect user if logged in
+    if (locals.user) {
+        throw redirect(302, '/');
+    }
+}
+
 export const actions = {
     default: async ({ cookies, request }) => {
         const formData = await request.formData()
@@ -19,13 +26,9 @@ export const actions = {
 			});
         }
 
-        const { user, token } = await response.json()
-        
-        cookies.set('user_id', user.id, { 
-            path: '/'
-        });
+        const { token } = await response.json()
 
-        cookies.set('token', token.token, {
+        cookies.set('token', token, {
             path: '/',
             httpOnly: true,
             sameSite: 'strict',

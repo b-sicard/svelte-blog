@@ -3,6 +3,7 @@
     import { Navbar, NavBrand, NavLi, NavUl, NavHamburger, Button } from 'flowbite-svelte';
 
     export let data;
+    console.log(data);
 </script>
 
 <Navbar style={'border-bottom: 1px solid #E5E7EB;'}>

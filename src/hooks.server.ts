@@ -3,9 +3,8 @@ import * as api from '$lib/services/api';
 
 export const handle: Handle = async ({ event, resolve }) => {
 
-	const userId = event.cookies.get('user_id')
-	if (userId) {
-		const response = await api.get(`users/${userId}`)
+	if (event.cookies.get('token') && !event.locals.user) {
+		const response = await api.get(`user`)
 		const user = await response.json()
 		event.locals.user = user
 	}
