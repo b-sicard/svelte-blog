@@ -3,20 +3,22 @@ import { env } from '$env/dynamic/public';
 
 export const handle: Handle = async ({ event, resolve }) => {
 
-	if (event.locals.user) return resolve(event);
+	const { locals, cookies, fetch } = event
 
-	const token = event.cookies.get('token')
+	if (locals.user) return resolve(event);
+
+	const token = cookies.get('token')
 
 	if (!token) return resolve(event);
 
-	const response = await event.fetch(`${env.PUBLIC_API_URL}/user`)
+	const response = await fetch(`${env.PUBLIC_API_URL}/user`)
 	const { user, errors } = await response.json()
 
 	if (errors) {
-		throw new Error(errors)
+		throw new Error(errors[0])
 	}
 
-	event.locals.user = user
+	locals.user = user
 
 	return resolve(event);
 };
