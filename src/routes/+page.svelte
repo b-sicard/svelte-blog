@@ -1,10 +1,24 @@
 <script>
     import { Heading, Card, Button } from 'flowbite-svelte';
+
+    export let data;
+
+    const { user } = data
 </script>
 
 <svelte:head>
     <title>Blog - Home</title>
 </svelte:head>
+
+{#if user === undefined}
+    <Heading tag="h1" class="mb-10" customSize="text-4xl font-extrabold md:text-5xl lg:text--6xl">
+        Welcome to the blog
+    </Heading>
+{:else}
+    <Heading tag="h1" class="mb-10" customSize="text-4xl font-extrabold md:text-5xl lg:text--6xl">
+        Welcome back, {user.first_name}
+    </Heading>
+{/if}
 
 <Heading tag="h6">Last articles</Heading>
 

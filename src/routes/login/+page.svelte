@@ -13,10 +13,12 @@
         Login
     </Heading>
 
-    {#if form?.error}
-        <Alert color="red" class="mb-5">
-            {form.error}
-        </Alert>
+    {#if form?.errors?.length > 0}
+        {#each form?.errors as error}
+            <Alert color="red" class="mb-5">
+                {error.message}
+            </Alert>
+        {/each}
     {/if}
     
     <form method="POST">
@@ -28,7 +30,7 @@
             <Label for="password" class="mb-2">Password</Label>
             <Input type="password" name="password" placeholder="••••••••" required />
         </div>
-        <Button type="submit">Sign in</Button>
+        <Button type="submit">Login</Button>
     </form>
 </div>
 

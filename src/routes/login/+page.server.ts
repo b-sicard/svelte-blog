@@ -1,5 +1,5 @@
+import { env } from '$env/dynamic/public';
 import { redirect, type Actions, fail } from '@sveltejs/kit'
-import * as api from '$lib/services/api';
 
 export async function load({ locals }) {
     // redirect user if logged in
@@ -9,24 +9,23 @@ export async function load({ locals }) {
 }
 
 export const actions = {
-    default: async ({ cookies, request }) => {
+    default: async ({ cookies, request, fetch }) => {
         const formData = await request.formData()
         const email = formData.get('email')
         const password = formData.get('password')
 
-        const response = await api.post('login', {
-            email,
-            password
+        const response = await fetch(`${env.PUBLIC_API_URL}/login`, {
+            method: 'POST',
+            body: JSON.stringify({ email, password })
         })
-    
-        if (!response.ok) {
-            const { error } = await response.json()
-			return fail(401, {
-                error
-			});
-        }
 
-        const { token } = await response.json()
+        const { token, errors } = await response.json()
+
+        if (errors) {
+            return fail(401, {
+                errors
+            })
+        }
 
         cookies.set('token', token, {
             path: '/',
