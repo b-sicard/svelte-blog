@@ -1,11 +1,10 @@
-<script>
+<script lang="ts">
     import { Heading, Card, Button } from 'flowbite-svelte';
 
     export let data;
 
-    const { user, props } = data
-
-    console.log(props.posts)
+    const { user, props } = data;
+    const { posts } = props;
 </script>
 
 <svelte:head>
@@ -24,7 +23,7 @@
 
 <Heading tag="h6">Last articles</Heading>
 
-{#each props.posts as post}
+{#each posts as post}
     <Card>
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {post.title}

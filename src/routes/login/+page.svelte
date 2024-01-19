@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import { Heading, Input, Label, Button, Alert } from 'flowbite-svelte';
 
     export let form;

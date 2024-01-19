@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import "../app.pcss";
     import { Navbar, NavBrand, NavLi, NavUl, NavHamburger, Button } from 'flowbite-svelte';
     import { goto } from "$app/navigation";
