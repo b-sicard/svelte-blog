@@ -1,9 +1,13 @@
 <script lang="ts">
-    import { Heading, Input, Label, Button, Alert, Textarea } from 'flowbite-svelte';
+    import { Input, Label, Button } from 'flowbite-svelte';
     import Editor from '@tinymce/tinymce-svelte';
 
-    let value: any;
+    let value: any;    
 </script>
+
+<svelte:head>
+    <title>Blog - New Post</title>
+</svelte:head>
 
 <form method="POST">
     <div class="mb-6">

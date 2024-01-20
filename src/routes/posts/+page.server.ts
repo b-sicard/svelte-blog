@@ -1,10 +1,6 @@
-import { env } from '$env/dynamic/public'
-
-export async function load({ fetch }) {
+export async function load({ parent }) {
     
-    const response = await fetch(`${env.PUBLIC_API_URL}/posts`)
-
-    const posts = await response.json()
+    const { posts } = await parent()
 
     return { props: { posts } }
 }

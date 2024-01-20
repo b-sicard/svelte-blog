@@ -27,6 +27,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@tinymce/tinymce-svelte": "^2.0.1"
+    "@tinymce/tinymce-svelte": "^2.0.1",
+    "tinymce": "^6.8.2"
   }
 }

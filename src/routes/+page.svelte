@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { goto } from '$app/navigation';
     import { Heading, Card, Button } from 'flowbite-svelte';
 
     export let data;
@@ -31,7 +32,7 @@
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 leading-tight">
             Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
         </p>
-        <Button class="w-fit">
+        <Button on:click={() => goto(`/posts/${post.id}`)} class="w-fit">
             Read more
         </Button>
     </Card>
