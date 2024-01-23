@@ -2,5 +2,5 @@ export async function load({ parent }) {
     
     const { posts } = await parent()
 
-    return { props: { posts } }
+    return { posts }
 }

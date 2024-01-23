@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import { Heading, P, Button } from 'flowbite-svelte';
 
     export let data;

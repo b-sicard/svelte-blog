@@ -1,13 +1,12 @@
 <script lang="ts">
     import { Input, Label, Button } from 'flowbite-svelte';
     import Editor from '@tinymce/tinymce-svelte';
+  import { Post } from '$lib/models/post.model';
 
     export let method: string = 'POST';
-    export let post: any = {};
+    export let post: Post = new Post({});
 
-    let value: any = post.content;
-
-
+    let value: string = post.content;
 </script>
 
 <form method={method}>
