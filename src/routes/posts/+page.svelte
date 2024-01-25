@@ -15,14 +15,29 @@
     Posts
 </Heading>
 
-<div>
+<section>
     {#if !!user}
-        <Card href="/posts/new">
-            +
+        <Card style={"height: 160px; width: calc(100% / 2)"} href="/posts/new">
+            <span>+</span>
         </Card>
     {/if}
 
     {#each posts as post}
         <PostCard post={post} />
     {/each}
-</div>
+</section>
+
+<style>
+
+    section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    span {
+        font-size: 100px;
+        font-weight: 100;
+        line-height: 100px;
+        text-align: center;
+    }
+</style>

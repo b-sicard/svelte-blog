@@ -21,12 +21,18 @@
     </Heading>
 {/if}
 
-<Heading tag="h6">Last articles</Heading>
+<Heading tag="h6" class="mb-5">Last articles</Heading>
 
-{#each posts as post}
-    <PostCard post={post} />
-{/each}
+<section>
+    {#each posts as post}
+        <PostCard post={post} />
+    {/each}
+</section>
 
 <style>
-    
+    section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
 </style>
